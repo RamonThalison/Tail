@@ -1,0 +1,290 @@
+q1.
+**Descrição:**
+O Pacman é um jogo arcade criado em 1980, o principal objetivo do jogo é coletar o máximo de frutinhas sem encostar nos fantasmas
+(que causam o fim do jogo). Aqui seguiremos uma premissa parecida na qual queremos encontrar o número máximo de frutinhas que podem 
+ser coletadas num determinado tabuleiro, mas com fantasmas camaradas que ao invés de finalizarem o jogo apenas roubam nossas frutas.  
+
+**Tarefa:**
+Você deverá escrever um programa que retorne o número máximo de frutinhas que podem ser capturadas em um dado tabuleiro seguindo as seguintes regras:
+
+* O Pacman sempre irá começar no lado superior esquerdo do tabuleiro.
+* O Pacman pode terminar o jogo a qualquer momento levando consigo as frutas que carrega no momento.
+* Sempre que o Pacman encostar em um fantasma ele perde todas as frutas que está carregando
+* Ele percorrerá a primeira linha da esquerda para a direita até chegar o fim da linha.
+* Ao chegar ao final de uma linha, ele irá descer uma posição e percorrer toda a linha, dessa vez no sentido oposto da linha anterior.
+* A última regra será repetida até que o tabuleiro inteiro tenha sido percorrido.
+
+**Entrada**:
+\
+Seu programa irá receber como entrada o tamanho do tabuleiro e as strings que irão compor o mesmo, seguindo as seguintes regras:
+
+* A primeira informação de entrada será um número inteiro N que corresponde ao tamanho do tabuleiro (Que sempre será quadrado)
+* As N seguinte entradas terão N caracteres que podem ser:
+  * "." Um espaço vazio do tabuleiro
+  * "o" Uma frutinha
+  * "G" Um fantasma
+* A primeira casa do tabuleiro sempre será um espaço vazio (".")
+* 2 <= N <= 50
+
+**Saída**:
+
+Seu programa deve retornar um único inteiro, o número máximo de frutinhas que o Pacman pode levar para casa após a fase.
+
+**Exemplo**:
+
+Entrada:
+
+[3, ".o.", "oGG", "ooo"]
+
+Para melhor visualização do tabuleiro:  
+
+    .o.
+    oGG
+    ooo
+Saída: 4
+
+q2.
+**Descrição:**
+
+Em muitos sistemas, é comum a necessidade de buscar elementos em uma coleção de dados. Entender a eficiência de diferentes algoritmos de busca é essencial para otimizar o desempenho do sistema. Neste desafio, você implementará e analisará diferentes estratégias de busca em listas.
+
+**Tarefa:**
+
+Implemente três funções de busca que encontrem um elemento em uma lista não ordenada:
+1. `busca_linear(lista, elemento)` que utiliza a busca linear para encontrar um elemento na lista.
+2. `busca_binaria(lista, elemento)` que primeiramente ordena a lista e depois realiza uma busca binária para encontrar o elemento.
+3. `busca_saltos(lista, elemento, passo)` que utiliza a busca por saltos (jump search) para encontrar um elemento na lista.
+
+**Requisitos:**
+
+* As funções devem retornar o índice do elemento na lista se ele estiver presente, ou -1 se ele não estiver.
+* Para o caso da busca binária, retorne o novo índice após a ordenação.
+* Implemente a busca por saltos de forma que o tamanho do passo seja um parâmetro ajustável.
+* Todas as funções devem ser implementadas de maneira eficiente para listas grandes.
+* Analise a complexidade de tempo e espaço de cada função, incluindo cada passo do algoritmo (e.g., busca, ordenação, etc.).
+* Discuta os melhores e piores casos para cada algoritmo.
+* Justifique a escolha dos algoritmos e a adequação de cada um para diferentes tipos de listas e tamanhos de dados.
+* Considere listas que contenham elementos de diferentes tipos (inteiros, strings, etc.) e justifique como seu código lida com essas variações.
+* Teste as funções com listas de diferentes tamanhos e conteúdos, e discuta os resultados.
+
+**Exemplos:**
+
+* `lista=[0, 3, 2, 5], elemento=3, retorna-se 1` para busca linear e 2 após ordenação na busca binária.
+* `lista=[1, 2, 8, 90], elemento=3, retorna-se -1` para todas as buscas.
+* `lista=[55, 30, 23, 12, 5, 67, 199], elemento=67, retorna-se 5` para busca linear e 5 após ordenação na busca binária.
+* `lista=['apple', 'banana', 'cherry'], elemento='banana', retorna-se 1` para todas as buscas.
+
+**Referências:**
+
+[1] [Pesquisa binária - Wikipedia](https://pt.wikipedia.org/wiki/Pesquisa_bin%C3%A1ria) \
+[2] [Pesquisa por saltos - Wikipedia](https://en.wikipedia.org/wiki/Jump_search)
+
+**Notas:**
+
+1. A busca linear é O(n) no pior caso.
+   - Melhor caso: O(1) (elemento está no início da lista)
+   - Pior caso: O(n) (elemento está no final da lista ou não está presente)
+
+2. A busca binária é O(log n) após a ordenação da lista, que é O(n log n).
+   - Melhor caso: O(log n) (elemento está no meio da lista)
+   - Pior caso: O(log n) (elemento está no início ou final da lista)
+
+3. A busca por saltos é O(√n) no pior caso, e o tamanho do passo ideal é √n.
+   - Melhor caso: O(1) (elemento está nos primeiros blocos)
+   - Pior caso: O(√n) (elemento está nos últimos blocos ou não está presente)
+
+**Dicas Adicionais:**
+
+1. Considere o impacto da escolha do tamanho do passo na busca por saltos.
+2. Compare e contraste a eficiência das três funções em diferentes cenários de uso, como listas muito grandes ou listas com tipos de dados mistos.
+3. Teste casos de borda, como listas vazias e listas com elementos repetidos.
+4. Justifique a adequação dos algoritmos para diferentes contextos de uso e tamanho de dados.
+5. Discuta a possibilidade de usar estruturas de dados mais complexas, como árvores balanceadas ou tabelas hash, e como elas poderiam impactar a eficiência da busca.
+
+**Desafio Extra:**
+
+Implemente uma quarta função `busca_hybrid(lista, elemento)` que combina as três técnicas anteriores de forma adaptativa, escolhendo dinamicamente o método de busca com base no tamanho e na distribuição dos dados na lista. Justifique a lógica usada para a escolha adaptativa e analise a complexidade dessa função.
+
+---
+
+q3.
+
+Tarefa:
+
+Implemente um autômato de pilha que aceite a linguagem { $L = a^i b^j c^k
+ : i ≠ 0, i < j, k < j$ } sobre o alfabeto { $a, b, c$ }. O autômato deve seguir as seguintes regras:
+
+Descrição:
+
+O autômato de pilha é uma máquina teórica que usa uma pilha para ajudar a decidir se uma palavra pertence à linguagem. Esse tipo de autômato é capaz de reconhecer linguagens que não podem ser reconhecidas por autômatos finitos simples, como linguagens com padrões aninhados e outras formas complexas de dependência entre símbolos.
+
+Regras
+O autômato deve aceitar palavras que começam com pelo menos um símbolo 'a' ($i \neq 0$).
+O número de símbolos 'b' deve ser maior que o número de símbolos 'a' ($i < j$).
+O número de símbolos 'b' deve ser maior que o número de símbolos 'c' ($k < j$).
+O autômato deve ler a palavra de entrada, caracter por caracter, e utilizar a pilha para controlar a contagem e a ordem dos símbolos lidos.
+
+Requisitos:
+
+* Alfabeto: O autômato de pilha deve trabalhar com o alfabeto { $a$, $b$, $c$ }.
+* Linguagem: A linguagem que o autômato deve aceitar é definida por { $L$ = $a^i$ $b^j$ $c^k$ : $i \neq 0$, $i < j$, $k < j$ }.
+* Condições da Linguagem:
+  1. A palavra deve começar com pelo menos um símbolo 'a' ($i \neq 0$).
+  2. O número de símbolos 'b' deve ser maior que o número de símbolos 'a' ($i < j$).
+  3. O número de símbolos 'b' deve ser maior que o número de símbolos 'c' ($k < j$).
+* Comportamento do Autômato:
+  1. O autômato deve usar uma pilha para rastrear e validar a contagem dos símbolos conforme as regras da linguagem.
+  2. Ele deve ser capaz de aceitar ou rejeitar uma palavra após processar todos os símbolos da entrada.
+
+# Exemplos
+* Entrada 1
+  * Entrada: "aabbbc"
+  * Saída: "Sucesso!"
+
+* Entrada 2
+  * Entrada: "aabbcc"
+  * Saída: "Palavra nao aceita"
+
+q4.
+
+**Descrição:**
+Nessa seção, você adentrará no âmbito da análise de dados, que se trata do processo de limpeza, inspeção, modelagem e 
+transformação de dados, corroborando para uma melhor interpretação dos dados e tomadas de decisão mais incisivas. 
+Após essa breve introdução, você terá de analisar o dataset [American Kennel Club](https://github.com/tmfilho/akcdata).
+
+A seguir, o dataframe já estará montado pelo método `pd.read_csv()` da biblioteca `pandas`, a partir da execução da célula.
+Dica: Você pode acessar a documentação da biblioteca `pandas` [clicando aqui](https://pandas.pydata.org/docs/getting_started/index.html#getting-started).
+Após o processamento do dataframe, você terá de realizar uma descrição estatística dos dados.
+
+Antes de qualquer análise mais aprofundada sobre um conjunto de dados, é necessário ter uma noção de como estes dados estão distribuídos, que valores são 
+mais comuns entre os dados, o quão dispersos estão e se existem valores que se distinguem do dataset, de uma maneira geral. Todas estas informações são 
+classificadas como estatísticas, e em ciência de dados é preciso ter ideias claras sobre a forma do conjunto de dados em questão, utilizando-se majoritariamente 
+da visão como forma de comunicar e representar as estatísticas elementares destes dados. Realize uma análise exploratória sobre os dados deste problema,
+apresentando as medidas de localização, dispersão e os valores que não se repetem em cada coluna, utilizando a biblioteca `matplotlib.pyplot` para 
+criar gráficos que representem estas medidas. Utilize boxplots para visualizar dados muito discrepantes entre as amostras do dataset.
+
+Após verificar o dataset acima e a relação das descrições com os valores existentes, realize o processo de limpeza dos dados, verificando possíveis 
+inconsistências entre as instâncias (linhas que compõem o dataset). Mais uma vez, a leitura da documentação do `pandas` é uma excelente iniciativa.
+
+4.4.1 - Em um problema de _Data Science_, é comum nos depararmos com um dataset cujos atributos não esclareçam com efetividade o comportamento de um 
+dado fenômeno. Desta forma, cientistas de dados devem estar aptos a manipular atributos existentes e assim definir novos atributos, de acordo com
+os critérios estabelecidos. Este processo é descrito como _Feature Engineering_, e trata apenas da manipulação algébrica e/ou lógica de atributos 
+(colunas, no contexto prático) com o intuito de alimentar o seu modelo de Machine Learning com dados relevantes à resolução do problema. Nesta etapa,
+você deverá utilizar sua intuição aliando criatividade para decidir como novos atributos podem ser definidos, a partir dos dados que você já possui.
+
+4.4.2 - Em poucos termos, algoritmos de Machine Learning só funcionam com valores numéricos. Isto significa que antes de treinar qualquer modelo,
+deve-se transformar os dados categóricos em dados numéricos. Encontre uma forma de *codificar* as colunas de dados categóricos, de forma que seu
+modelo consiga interpretar todos os atributos não-numéricos como numéricos.
+
+q5.
+
+**Descrição:**
+Nessa seção você irá explorar a área da NLP, que têm como objetivo obter informações de textos, e além disso, tratá-los e manipular strings com objetivos específicos.
+
+**Sobre a questão:**
+Você deve tratar os textos(coluna "reviews" ou "reviews_en"), fazer análises e mudanças necessárias para cumprir seu objetivo em cada pergunta feita.
+
+5.1.1 - Remover pontuação e caracteres especiais, normalizar letras maiúsculas
+5.1.2 - Tokenizar palavras
+5.1.3 - Remover stop words
+5.1.4 - Lematização
+5.2 - Faça a Análise Exploratória do dataset criado, encontre:
+5.2.1 - Distribuição das classes - Nesse dataset você pode trabalhar tanto com a coluna "scores", quanto com "classification". Mas use a 
+"classification" como referência, sendo 1 == texto com sentimento **positivo**, 0 == **neutro** ou incapaz de classificar e 
+-1 == sentimento **negativo**.
+5.2.2 - Palavras mais frequentes de cada classe
+5.2.3 - Comparar as palavras mais comuns dos textos negativos e dos positivos.
+5.3 - Confira se alguns dados classificados como positivo ou negativo (1 ou -1) na coluna "classification" estão condizentes com a coluna "score",
+ache as linhas que tem sentimento positivo e tem scores < 3; Ache também as linhas que tem sentimento negativo e tem scores > 3.
+Elas são as divergências das classificações. Apresente da forma que desejar.
+
+q6.
+
+6.1 - Trabalhando com imagens
+
+Logo abaixo é possível ver descrito em código um processo de leitura e plotagem de imagem com python. Leve a figura abaixo em consideração para
+realizar todas as instruções das subseções da 6
+Obs: Em caso de abertura, ou reabertura de notebook, relembrar de sempre rodar as bibliotecas e varíaveis novamente
+
+6.2 - Detecção de Bordas
+Dentro da visão computacional existe o conceito de bordas, que nada mais é do que determinar características de contornos de objetos em uma foto
+Tendo isso em mente, realize o processo de delimitação de bordas na imagem abaixo utilizando a função Canny Edge Detector do OpenCV.
+
+6.3 - Binarização
+O processo de binarização consiste em transformar os pixels de uma imagem em regiões pretas e brancas, resultando numa forma mais 
+simplificada da image.
+Ralizar o processo de Binarização da imagem pelo OpenCV utilizando o método Otsu.
+
+6.4 - Histograma
+Exibir uma imagem em histograma representa os tons distribuidos da imagem. Esse conceito é muito importante pois pode ser utilizado para equalizar 
+a imagem através de um histograma.
+Transforme a imagem para escala de cinza e plote o histograma da imagem
+
+6.5 - Normalização e equalização:
+As operações de normalização e equalização evitam que imagens tenham partes excessivamente claras ou escuras, fazendo com que elas fiquem melhor
+distribuidas e tenham um contraste mais agradável, isso melhora a visualização de detalhes. Uma das suas utilidades é o tratamento de imagens muito
+claras ou escuras.
+![Exemplo de imagem normalizada](https://miro.medium.com/v2/resize:fit:1400/1*IRap5GYPH_DDeyrqbj446A.png)
+Pegue sua imagem em escala de cinza e aplique as seguintes operações nela.
+1. Normalização de histograma;
+2. Equalização de histograma;
+
+q7.
+
+Nesta questão, vocês irão lidar diretamente com a aplicação prática de modelos de Machine Learning, fazendo uso de dois tipos diferentes de 
+aprendizagem: Aprendizado Supervisionado e Aprendizado Não-Supervisionado.
+Considerando o dataset abaixo, aplique um modelo de sua escolha para cada tipo de aprendizado citado acima. A biblioteca usada para
+implementação, o pipeline de tratamento dos dados e o atributo de saída(no caso do supervisionado) ficam inteiramente à escolha do candidato.
+O objetivo dessa tarefa é ver como vocês tomam decisões durante a aplicação dos modelos, seja como escolhem o atributo de saída, ou quais colunas 
+são mantidas no treinamento, ou quantos clusteres escolhem, além de ver como vocês interpretam os resultados obtidos após o treinamento.
+As aulas da Professora Thaís que disponibilizamos no início do notebook são um excelente ponto de partida para desenvolver essa questão e,
+junto a elas, disponibilizaremos documentação para auxiliá-los com cada modelo.
+
+### Entendendo o dataset
+Este dataset contém informações sobre os 1000 filmes mais avaliados do TMDb (The Movie Database). Ele possui 1000 elementos com 19 atributos.
+
+Seus atributos são:
+* Title -> Título do filme em inglês
+* Vote_average -> Média das avaliações recebidas
+* Vote_count -> Quantidade de avaliações recebidas
+* Status -> Se o filme já foi lançado ou não
+* Release_date -> Data do lançamento (AAAA-MM-DD)
+* Revenue -> Receita total do filme em $
+* Runtime -> Duração do filme em minutos
+* Adult -> Se ele é marcado como adulto ou não
+* Budget -> Orçamento da produção
+* Original_language -> Idioma original do filme
+* Original_title -> Título no idioma original
+* Overview -> Seria como uma sinopse do filme
+* Tagline -> Uma frase de efeito ou linha memorável associada a ele
+* Genres -> Gêneros que ele possui
+* Production_companies -> Estúdios que o produziram
+* Production_countries -> Países envolvidos na produção
+* Spoken_languages -> Línguas que são faladas no filme
+* Keywords -> Palavras-chave que o descrevem
+* Id -> Id do filme na nossa base
+
+7.2 Preparando o dataframe
+Faça as manipulações necessárias no dataframe para poder utilizá-lo nos modelos.
+
+7.3 Aprendizado Supervisionado
+No aprendizado supervisionado, nós temos os atributos de saída no dataset de treinamento e nosso objetivo é treinar o modelo usando esses dados 
+para prever esses valores em novos dados.
+É importante que você faça o calculo de métricas de avaliação na hora da apresentação dos resultados.
+
+Dica: Você pode utilizar alguma classe com valores numéricos para fazer uma regressão ou tentar fazer uma classificação dos atributos
+nominais (cuidado com os multivalorados)
+Documentação da biblioteca scikit-learn
+[Aprendizado Supervisionado](https://scikit-learn.org/stable/supervised_learning.html)
+
+7.4 Aprendizado Não-Supervisionado
+No aprendizado não-supervisionado, nosso intuito não é mais fazer a previsão de rótulos e sim, agrupar os nossos dados em grupos (clusteres)
+de acordo com o grau de semelhança que eles possuem entre si.
+
+Dica: No nosso caso, podemos ver como os filmes que estão no mesmo cluster são parecidos, se possuem o mesmo gênero, se têm notas parecidas, etc.
+
+**Recursos:**
+
+Documentação da biblioteca scikit-learn
+
+[Aprendizado Não-Supervisionado](https://scikit-learn.org/stable/modules/clustering.html)
